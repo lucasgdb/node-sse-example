@@ -21,6 +21,12 @@ curl -X POST \
  -s http://localhost:3000/fact
 ```
 
+### Testing with cURL:
+
+```bash
+curl -H Accept:text/event-stream http://localhost:3001/events
+```
+
 ### Credits
 
 [Digital Ocean](https://www.digitalocean.com/community/tutorials/nodejs-server-sent-events-build-realtime-app)
