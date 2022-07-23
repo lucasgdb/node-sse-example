@@ -24,7 +24,7 @@ curl -X POST \
 ### Testing with cURL:
 
 ```bash
-curl -H Accept:text/event-stream http://localhost:3001/events
+curl -H Accept:text/event-stream http://localhost:3000/events
 ```
 
 ### Credits
