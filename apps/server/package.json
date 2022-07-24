@@ -10,6 +10,9 @@
   "scripts": {
     "dev": "ts-node --transpileOnly server.ts"
   },
+  "engines": {
+    "node": ">=16.x"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1"
