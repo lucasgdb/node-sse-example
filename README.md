@@ -1,5 +1,7 @@
 # Server-Sent Events (SSE)
 
+Server-Sent Events (SSE) is a [server push](https://en.wikipedia.org/wiki/Push_technology) technology enabling a client to receive automatic updates from a server via an HTTP connection, and describes how servers can initiate data transmission towards clients once an initial client connection has been established. They are commonly used to send message updates or continuous data streams to a browser client and designed to enhance native, cross-browser streaming through a JavaScript API called EventSource, through which a client requests a particular URL in order to receive an event stream. The EventSource API is standardized as part of HTML5 by the WHATWG. The mime type for SSE is text/event-stream.
+
 ## Requirements
 
 - Docker
