@@ -1,8 +1,7 @@
 import express from "express";
 import type { Request, Response } from "express";
 import cors from "cors";
-
-const PORT = 3000;
+import { randomUUID } from "node:crypto";
 
 const app = express();
 
@@ -18,6 +17,8 @@ type Client = {
   id: number;
   response: Response;
 };
+
+type Fact = { id: string } & Request["body"];
 
 let clients: Client[] = [];
 
@@ -62,7 +63,8 @@ function sendEventsToAll(newFact: Fact) {
 }
 
 async function addFact(request: Request, response: Response) {
-  const newFact = request.body;
+  const newFact: Fact = { id: randomUUID(), ...request.body };
+
   facts.push(newFact);
 
   response.json(newFact);

@@ -28,6 +28,7 @@ const TableData = styled.td`
 `;
 
 type Fact = {
+  id: string;
   info: string;
   source: string;
 };
@@ -61,8 +62,8 @@ export default function App() {
         </thead>
 
         <tbody>
-          {facts.map((fact, i) => (
-            <TableRow key={i}>
+          {facts.map((fact) => (
+            <TableRow key={fact.id}>
               <TableData>{fact.info}</TableData>
               <TableData>{fact.source}</TableData>
             </TableRow>
