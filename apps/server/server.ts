@@ -9,10 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/status", (_request, response) =>
-  response.json({ clients: clients.length })
-);
-
 type Client = {
   id: number;
   response: Response;
@@ -21,8 +17,6 @@ type Client = {
 type Fact = { id: string } & Request["body"];
 
 let clients: Client[] = [];
-
-type Fact = Request["body"];
 
 const facts: Fact[] = [];
 
@@ -54,8 +48,6 @@ function eventsHandler(request: Request, response: Response) {
   });
 }
 
-app.get("/events", eventsHandler);
-
 function sendEventsToAll(newFact: Fact) {
   clients.forEach((client) =>
     client.response.write(`data: ${JSON.stringify(newFact)}\n\n`)
@@ -72,7 +64,15 @@ async function addFact(request: Request, response: Response) {
   return sendEventsToAll(newFact);
 }
 
+app.get("/status", (_request, response) =>
+  response.json({ clients: clients.length })
+);
+
+app.get("/events", eventsHandler);
+
 app.post("/fact", addFact);
+
+const PORT = 3000;
 
 app.listen(PORT, () => {
   console.log(`Facts Events service listening at http://localhost:${PORT}`);
